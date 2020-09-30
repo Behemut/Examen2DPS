@@ -21,6 +21,9 @@ import { AuthGuard } from "./guard/auth.guard";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { RegistrosComponent } from './components/registros/registros.component';
+import { ListaRegistrosComponent } from './components/registros/lista-registros/lista-registros.component';
+import { RegistroComponent } from './components/registros/registro/registro.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { ToastrModule } from 'ngx-toastr';
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    RegistrosComponent,
+    ListaRegistrosComponent,
+    RegistroComponent
     ],
   imports: [
     BrowserModule,

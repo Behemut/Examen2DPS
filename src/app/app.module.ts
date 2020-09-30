@@ -19,6 +19,10 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guard/auth.guard";
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +37,9 @@ import { AuthGuard } from "./guard/auth.guard";
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard], //Agregamos a los providers el guard
   bootstrap: [AppComponent]

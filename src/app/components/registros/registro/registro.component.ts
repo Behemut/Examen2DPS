@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
-
 import { Registro }  from '../../../models/registro';
-
 import { RegistroService } from '../../../services/registro.service';
-
-
-
 
 @Component({
   selector: 'app-registro',

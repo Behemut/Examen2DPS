@@ -1,1 +1,41 @@
-<p>registro works!</p>
+<div class="card mt-5">
+  <div class="card-body">
+
+      <!-- Cuando el evento onSubmit , suceda se va pasar todo el formulario 'productForm' -->
+      <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
+
+          <!-- TO UPDATE -->
+          <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="registroServicio.RegSeleccionados.$key">
+
+          <div class="form-group">
+              <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="registroServicio.RegSeleccionados.nombre" placeholder="Nombre">
+          </div>
+
+          <div class="form-group">
+              <input type="text" class="form-control" name="dui" #dui="ngModel" [(ngModel)]="registroServicio.RegSeleccionados.dui" placeholder="DUI">
+          </div>
+
+          <div class="form-group">
+              <input type="text" class="form-control" name="vehiculo" #vehiculo="ngModel" [(ngModel)]="registroServicio.RegSeleccionados.vehiculo" placeholder="Vehiculo">
+          </div>
+
+          <div class="form-group">
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number" class="form-control" name="costo_reparacion" #costo_reparacion="ngModel"  [(ngModel)]="registroServicio.RegSeleccionados.costo_reparacion" placeholder="Costo reparacion">
+              </div>
+          </div>
+
+          <div class="form-group">
+              <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-plus-circle"></i> Añadir  Registro
+              </button>
+              <button class="btn btn-secondary" type="reset" (click)="resetForm(registroForm)">
+                  <i class="fas fa-sync-alt"></i> Limpiar
+              </button>
+          </div>
+      </form>
+  </div>
+</div>

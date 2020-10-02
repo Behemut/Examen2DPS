@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -21,9 +21,12 @@ import { AuthGuard } from "./guard/auth.guard";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+
+
 import { RegistrosComponent } from './components/registros/registros.component';
 import { ListaRegistrosComponent } from './components/registros/lista-registros/lista-registros.component';
 import { RegistroComponent } from './components/registros/registro/registro.component';
+import { RegistroService } from './services/registro.service';
 
 
 @NgModule({
@@ -41,13 +44,14 @@ import { RegistroComponent } from './components/registros/registro/registro.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard], //Agregamos a los providers el guard
+  providers: [AuthGuard,  RegistroService], //Agregamos a los providers el guard
   bootstrap: [AppComponent]
 })
 export class AppModule { }

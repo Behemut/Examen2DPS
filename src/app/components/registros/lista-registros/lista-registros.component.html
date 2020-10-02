@@ -1,1 +1,26 @@
-<p>lista-registros works!</p>
+<div class="card">
+  <div class="card-body">
+      <h6 class="text-center">
+          Registro de clientes
+      </h6>
+      <table class="table table-md table-hover">
+          <tbody>
+              <tr *ngFor="let registro of RegistroLista">
+
+                  <td>{{registro.nombre}}</td>
+                  <td>{{registro.dui}}</td>
+                  <td>{{registro.vehiculo}}</td>
+                  <td>{{registro.costo_reparacion}}</td>
+                  <td>
+                      <a class="btn btn-secondary text-white" (click)="onEdit(registro)">
+                          <i class="far fa-edit"></i>
+                      </a>
+                      <a class="btn btn-danger text-white" (click)="onDelete(registro.$key)">
+                          <i class="fas fa-trash-alt"></i>
+                      </a>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

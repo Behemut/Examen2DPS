@@ -4,4 +4,5 @@ export class Registro {
   dui: string;
   vehiculo: string;
   costo_reparacion: number;
+  visitas: number;
 }

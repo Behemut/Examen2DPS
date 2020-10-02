@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Registro } from '../models/registro';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Ticket } from '../models/ticket';
 
 
 @Injectable({
@@ -17,8 +18,6 @@ export class RegistroService {
 
   constructor(
     private firebase: AngularFireDatabase,
-    private firestore: AngularFirestore
-
     ) { }
 
 
@@ -27,6 +26,9 @@ export class RegistroService {
     //Nombre con la que se guardara en Firebase Database
     return this.ListaClientes = this.firebase.list('clientes');
 
+  }
+
+  getTickets(){
     return this.ListaTickets = this.firebase.list('tickets');
   }
 
@@ -34,12 +36,22 @@ insertarRegistro(registro: Registro){
   this.ListaClientes.push({
 nombre: registro.nombre,
 dui: registro.dui,
-vehiculo: registro.vehiculo,
-costo_reparacion: registro.costo_reparacion
+vehiculo: registro.vehiculo
+});
+this.insertarTicket(registro);
+}
+insertarTicket(registro: Registro){
+  this.ListaTickets = this.firebase.list('tickets');
+this.ListaTickets.push({
+  nombre: registro.nombre,
+  dui: registro.dui,
+  costo_reparacion: registro.costo_reparacion
   });
+}
+
+
 
 //ListaTicket.push()  Arrastraremos del Form todos los campos pero internamente los separaremos uno para tickets sera el historial y otro para registrar al cliente
-}
 
 
 updateRegistro(registro: Registro){
@@ -47,7 +59,7 @@ updateRegistro(registro: Registro){
     nombre: registro.nombre,
     dui: registro.dui,
     vehiculo: registro.vehiculo,
-    costo_reparacion: registro.costo_reparacion
+
       });
 }
 

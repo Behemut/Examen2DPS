@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Registro }  from '../../../models/registro';
+import { Ticket }  from '../../../models/ticket';
 import { RegistroService } from '../../../services/registro.service';
 
 @Component({
@@ -23,10 +24,11 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmit(registroForm: NgForm){
-    if(registroForm.value.$key == null)
+    if(registroForm.value.$key == null){
     this.registroServicio.insertarRegistro(registroForm.value);
-    else
-      this.registroServicio.updateRegistro(registroForm.value);
+
+    }else{
+      this.registroServicio.updateRegistro(registroForm.value);}
 
     this.toastr.success('Operación realizada', 'Registro añadido');
     this.resetForm(registroForm);

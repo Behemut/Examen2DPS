@@ -16,22 +16,18 @@ export class ListaRegistrosComponent implements OnInit {
 
   @Input() item_busqueda :any;
   @Input() item_ticket :any;
-
-
   public show_ticket:boolean=false;
-
   public show_clientes:boolean=false;
-
-
 //Estos son Arrays
 RegistroLista: Registro[];
 TicketLista: Registro[];
-
 
   constructor(
     public toastr: ToastrService,
     public registroServicio: RegistroService) { }
 
+
+    //Llenado general de las Listas Arrays para tickets y clientes
   ngOnInit(){
    return this.registroServicio.getRegistros().snapshotChanges().subscribe(item => {
       this.RegistroLista = [];
@@ -50,9 +46,9 @@ TicketLista: Registro[];
 }*/
 BuscarClientes(busqueda: string) {
   if(busqueda==null || busqueda==='')  //Si esta vacio mostrara los campos en general pero sin repetir
-  return this.RegistroLista.filter((v,i,a)=>a.findIndex(t=>(t.nombre === v.nombre && t.dui===v.dui))===i);
+     return this.RegistroLista.filter((v,i,a)=>a.findIndex(t=>(t.vehiculo === v.vehiculo && t.dui===v.dui))===i);
   else  //Si se ha escrito en el campo mostrara el usuario que busca
-  return this.RegistroLista.filter((item) => item.nombre===busqueda).filter((v,i,a)=>a.findIndex(t=>(t.nombre === v.nombre && t.dui===v.dui))===i);
+     return this.RegistroLista.filter((item) => item.nombre===busqueda).filter((v,i,a)=>a.findIndex(t=>(t.vehiculo === v.vehiculo && t.dui===v.dui))===i);
 }
 
 BuscarTicket(busqueda: string) {
@@ -84,7 +80,7 @@ toggle_clientes(){
 
 
 onEdit(registro: Registro){
-  this.registroServicio.RegSeleccionados = Object.assign({}, registro);
+  this.registroServicio.RegSeleccionados = Object.assign({},registro);
 }
 
 onDelete($key: string){

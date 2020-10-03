@@ -32,34 +32,34 @@ export class RegistroService {
   }
 
 insertarRegistro(registro: Registro){
-  this.ListaClientes.push({
+this.ListaClientes.push({
 nombre: registro.nombre,
 dui: registro.dui,
 vehiculo: registro.vehiculo
 });
 this.insertarTicket(registro);
 }
+
+
 insertarTicket(registro: Registro){
-  this.ListaTickets = this.firebase.list('tickets');
+this.ListaTickets = this.firebase.list('tickets');
 this.ListaTickets.push({
   nombre: registro.nombre,
   dui: registro.dui,
+  vehiculo: registro.vehiculo,
   costo_reparacion: registro.costo_reparacion
   });
 }
 
-
-
 //ListaTicket.push()  Arrastraremos del Form todos los campos pero internamente los separaremos uno para tickets sera el historial y otro para registrar al cliente
-
 
 updateRegistro(registro: Registro){
   this.ListaClientes.update(registro.$key, {
     nombre: registro.nombre,
     dui: registro.dui,
     vehiculo: registro.vehiculo,
-
-      });
+    });
+    this.insertarTicket(registro);
 }
 
 EliminarRegistro($key: string){

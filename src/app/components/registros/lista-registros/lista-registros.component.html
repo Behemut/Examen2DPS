@@ -1,16 +1,19 @@
 <div class="card">
   <div class="card-body">
       <h6 class="text-center">
-          Registro de clientes
+          Historial de compra general
       </h6>
+      <ng-container *ngIf="show_ticket">
       <table class="table table-md table-hover">
+        <div class="form-group">
+          <input type="text" class="form-control" name="busqueda" id="busqueda" [(ngModel)]="item_ticket"  placeholder="Busqueda por DUI">
+      </div>
           <tbody>
-              <tr *ngFor="let registro of RegistroLista">
+              <tr *ngFor="let registro of BuscarTicket(item_ticket)">
 
                   <td>{{registro.nombre}}</td>
                   <td>{{registro.dui}}</td>
-                  <td>{{registro.vehiculo}}</td>
-                  <td>{{registro.visitas }}</td>
+                  <td><p>${{registro.costo_reparacion}}</p></td>
                   <td>
                       <a class="btn btn-secondary text-white" (click)="onEdit(registro)">
                           <i class="far fa-edit"></i>
@@ -22,5 +25,44 @@
               </tr>
           </tbody>
       </table>
+    </ng-container>
+    <button class="btn btn-secondary" type="button" (click)="toggle_tickets(); MostrarHistorial()">
+      <i class="fas fa-sync-alt"></i> Mostrar historial de tickets
+  </button>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-body">
+      <h6 class="text-center">
+        Lista de clientes
+      </h6>
+      <ng-container *ngIf="show_clientes">
+      <table class="table table-md table-hover">
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="busqueda" id="busqueda" [(ngModel)]="item_busqueda"  placeholder="Busqueda por nombre">
+      </div>
+          <tbody>
+              <tr *ngFor="let registro of BuscarClientes(item_busqueda)">
+                  <td>{{registro.nombre}}</td>
+                  <td>{{registro.dui}}</td>
+                  <td>{{registro.vehiculo}}</td>
+                  <td>
+                      <a class="btn btn-secondary text-white" (click)="onEdit(registro)">
+                          <i class="far fa-edit"></i>
+                      </a>
+                      <a class="btn btn-danger text-white" (click)="onDelete(registro.$key)">
+                          <i class="fas fa-trash-alt"></i>
+                      </a>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+    </ng-container>
+    <button class="btn btn-secondary" type="button" (click)="toggle_clientes()">
+      <i class="fas fa-sync-alt"></i> Mostrar clientes registrados
+  </button>
   </div>
 </div>

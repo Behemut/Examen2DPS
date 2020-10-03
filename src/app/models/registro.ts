@@ -1,3 +1,5 @@
+import { Timestamp } from 'rxjs';
+
 export class Registro {
  $key: string;
   nombre: string;

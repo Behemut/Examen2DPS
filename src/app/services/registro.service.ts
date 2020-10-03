@@ -25,7 +25,6 @@ export class RegistroService {
   getRegistros(){
     //Nombre con la que se guardara en Firebase Database
     return this.ListaClientes = this.firebase.list('clientes');
-
   }
 
   getTickets(){

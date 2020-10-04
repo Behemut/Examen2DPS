@@ -21,3 +21,9 @@ body{
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(55,179,136,0.7231267507002801) 0%, rgba(0,212,255,1) 100%);
 background-repeat: repeat;
 }
+
+img{
+    width: 31%;
+    margin-left: 17%;
+    margin-top: 5%;
+}

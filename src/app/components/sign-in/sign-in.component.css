@@ -1,0 +1,23 @@
+input{
+    height: 56px;
+    width: 149%;
+    margin-left: -67%;
+    
+    border: 2px 2px;
+    border-radius: 30px
+}
+#google{
+    margin-left: -40%;
+    width: 149%;
+    border-radius: 30px
+}
+#nocuenta{
+margin-left: -39%;
+border-radius: 30px
+}
+
+body{
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(55,179,136,0.7231267507002801) 0%, rgba(0,212,255,1) 100%);
+background-repeat: repeat;
+}

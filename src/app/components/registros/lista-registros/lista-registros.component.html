@@ -1,4 +1,7 @@
-<div class="card">
+<div id="contenedorprincipal">
+
+
+<div class="card" style="    width: 256%;">
   <div class="card-body">
       <h6 class="text-center">
           Historial de compra general
@@ -27,13 +30,15 @@
           </tbody>
       </table>
     </ng-container>
-    <button class="btn btn-secondary" type="button" (click)="toggle_tickets(); MostrarHistorial()">
+    <button class="btn btn-secondary" type="button" (click)="toggle_tickets(); MostrarHistorial()" style="    margin-left: 117px;">
       <i class="fas fa-sync-alt"></i> Mostrar historial de tickets
   </button>
   </div>
 </div>
+<br>
 
-<div class="card">
+
+<div class="card" style="    width: 256%;">
   <div class="card-body">
       <h6 class="text-center">
         Lista de clientes
@@ -62,8 +67,11 @@
           </tbody>
       </table>
     </ng-container>
-    <button class="btn btn-secondary" type="button" (click)="toggle_clientes()">
+    <button class="btn btn-secondary" type="button" (click)="toggle_clientes()" style="    margin-left: 117px;">
       <i class="fas fa-sync-alt"></i> Mostrar clientes registrados
   </button>
   </div>
 </div>
+</div>
+<br>
+<br>

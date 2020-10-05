@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
+    "angular-text-parse": "^1.1.0",
+    "array-to-txt-file": "^1.0.2",
     "bootstrap": "^4.5.2",
     "firebase": "^7.21.1",
     "ngx-pagination": "^5.0.0",

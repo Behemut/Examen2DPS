@@ -1,5 +1,5 @@
 <div id="contenedorprincipal">
-
+  <script src="angular-text-parse.js"></script>
 
 <div class="card" style="    width: 256%;">
   <div class="card-body">
@@ -13,7 +13,6 @@
       </div>
           <tbody>
               <tr *ngFor="let registro of BuscarTicket(item_ticket)">
-
                   <td>{{registro.nombre}}</td>
                   <td>{{registro.dui}}</td>
                   <td>{{registro.vehiculo}}</td>
@@ -21,6 +20,9 @@
                   <td>
                       <a class="btn btn-secondary text-white" (click)="onEdit(registro)">
                           <i class="far fa-edit"></i>
+                      </a>
+                      <a class="btn btn-secondary text-white" (click)="dynamicDownloadTxt(registro.$key); fakeValidateUserData(registro.$key)" >
+                        <i class="fa fa-print"></i>
                       </a>
                       <a class="btn btn-danger text-white" (click)="onDelete(registro.$key)">
                           <i class="fas fa-trash-alt"></i>

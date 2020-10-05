@@ -6,6 +6,7 @@ import { element } from 'protractor';
 import { Input } from '@angular/core';
 import { Registro }  from '../../../models/registro';
 import { RegistroService } from '../../../services/registro.service';
+import { Observable, of } from "rxjs";
 
 @Component({
   selector: 'app-lista-registros',
@@ -89,6 +90,52 @@ onDelete($key: string){
     this.toastr.warning('Registro eliminado');
   }
 }
+
+
+//GENERACION DE TXT
+
+fakeValidateUserData($key: string) {
+for(var x=0; x< this.TicketLista.length; x++){
+    if(this.TicketLista[x].$key== $key)
+      return of (this.TicketLista[x]);
+    }
+
+}
+
+private setting = {
+  element: {
+    dynamicDownload: null as HTMLElement
+  }
+}
+
+dynamicDownloadTxt($key: string) {
+  this.fakeValidateUserData($key).subscribe((res) => {
+    //FORMATO DE IMPRESION
+    this.dyanmicDownloadByHtmlTag({
+      fileName: 'Ticket-Venta' + $key,
+      text: "FACTURA DE TALLER \n" +
+      "Nombre de cliente: " +res.nombre + "\n" +
+      "Vehiculo: " +res.vehiculo + "\n" +
+      "Monto Total: " + '$' +res.costo_reparacion + "\n"
+
+    });
+  });
+
+}
+
+private dyanmicDownloadByHtmlTag(arg: {fileName: string,text: string}) {
+  if (!this.setting.element.dynamicDownload) {
+    this.setting.element.dynamicDownload = document.createElement('a');
+  }
+  const element = this.setting.element.dynamicDownload;
+  const fileType = arg.fileName.indexOf('.json') > -1 ? 'text/json' : 'text/plain';
+  element.setAttribute('href', `data:${fileType};charset=utf-8,${encodeURIComponent(arg.text)}`);
+  element.setAttribute('download', arg.fileName);
+
+  var event = new MouseEvent("click");
+  element.dispatchEvent(event);
+}
+
 
 
 }

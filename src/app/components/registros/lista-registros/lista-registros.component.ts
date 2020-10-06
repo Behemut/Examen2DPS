@@ -90,6 +90,12 @@ onDelete($key: string){
     this.toastr.warning('Registro eliminado');
   }
 }
+  onDeleteTicket($key: string){
+    if (confirm('¿Esta seguro de eliminar el registro?')){
+      this.registroServicio.EliminarTicket($key);
+      this.toastr.warning('Venta eliminada');
+    }
+  }
 
 
 //GENERACION DE TXT

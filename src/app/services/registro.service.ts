@@ -66,6 +66,8 @@ EliminarRegistro($key: string){
   this.ListaClientes.remove($key);
 }
 
-
+EliminarTicket($key: string){
+  this.ListaTickets.remove($key);
+}
 
 }
